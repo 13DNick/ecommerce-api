@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.nikitadev.ecommercestore.dao.ProductCategoryDAO;
 import com.nikitadev.ecommercestore.entities.ProductCategory;
@@ -15,26 +16,27 @@ public class ProductCategoryServiceImpl implements ProductCategoryService{
 	private ProductCategoryDAO productCategoryDAO;
 	
 	@Override
+	@Transactional
 	public List<ProductCategory> getProductCategories() {
 		return this.productCategoryDAO.getProductCategories();
 	}
 
 	@Override
+	@Transactional
 	public void saveProductCategory(ProductCategory productCategory) {
-		// TODO Auto-generated method stub
-		
+		this.productCategoryDAO.saveProductCategory(productCategory);
 	}
 
 	@Override
+	@Transactional
 	public ProductCategory getProductCategory(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return this.productCategoryDAO.getProductCategory(id);
 	}
 
 	@Override
+	@Transactional
 	public void deleteProductCategory(int id) {
-		// TODO Auto-generated method stub
-		
+		this.productCategoryDAO.deleteProductCategory(id);
 	}
 
 }

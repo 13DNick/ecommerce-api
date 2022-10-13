@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import com.nikitadev.ecommercestore.entities.ProductCategory;
 
+
 @Repository
 public class ProductCategoryDAOImpl implements ProductCategoryDAO{
 	
@@ -19,7 +20,6 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO{
 	
 	@Override
 	public List<ProductCategory> getProductCategories() {
-		
 		Session session = entityManager.unwrap(Session.class);
 		
 		Query<ProductCategory> query = session.createQuery("from ProductCategory", ProductCategory.class);
@@ -30,20 +30,23 @@ public class ProductCategoryDAOImpl implements ProductCategoryDAO{
 
 	@Override
 	public void saveProductCategory(ProductCategory productCategory) {
-		// TODO Auto-generated method stub
-		
+		Session session = entityManager.unwrap(Session.class);
+		session.saveOrUpdate(productCategory);	
 	}
 
 	@Override
 	public ProductCategory getProductCategory(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session = entityManager.unwrap(Session.class);
+		ProductCategory productCategory = session.get(ProductCategory.class, id);
+		return productCategory;
 	}
 
 	@Override
 	public void deleteProductCategory(int id) {
-		// TODO Auto-generated method stub
-		
+		Session session = entityManager.unwrap(Session.class);
+		Query<?> query = session.createQuery("delete from ProductCategory c where c.id=:id");
+		query.setParameter("id", id);
+		query.executeUpdate();
 	}
 
 }
