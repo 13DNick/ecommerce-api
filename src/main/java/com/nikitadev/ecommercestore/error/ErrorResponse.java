@@ -1,16 +1,16 @@
 package com.nikitadev.ecommercestore.error;
 
-public class ProductErrorResponse {
+public class ErrorResponse {
 	
 	private int status;
 	private String message;
 	private long timestamp;
 	
-	public ProductErrorResponse() {
+	public ErrorResponse() {
 		
 	}
 
-	public ProductErrorResponse(int status, String message, long timestamp) {
+	public ErrorResponse(int status, String message, long timestamp) {
 		super();
 		this.status = status;
 		this.message = message;

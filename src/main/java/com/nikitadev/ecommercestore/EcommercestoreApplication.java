@@ -3,6 +3,8 @@ package com.nikitadev.ecommercestore;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.nikitadev.ecommercestore.entities.Product;
+
 @SpringBootApplication
 public class EcommercestoreApplication {
 

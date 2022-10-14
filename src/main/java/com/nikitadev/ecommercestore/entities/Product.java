@@ -10,8 +10,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+
 @Entity
 @Table(name="product")
+//solve Jackson infinite recursion problem
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class Product {
 	
 	@Id
@@ -45,15 +51,13 @@ public class Product {
 		
 	}
 
-	public Product(String name, String description, double price, String imageURL, double rating, int ratingCount,
-			ProductCategory productCategory) {
+	public Product(String name, String description, double price, String imageURL, double rating, int ratingCount) {
 		this.name = name;
 		this.description = description;
 		this.price = price;
 		this.imageURL = imageURL;
 		this.rating = rating;
 		this.ratingCount = ratingCount;
-		this.productCategory = productCategory;
 	}
 
 	public int getId() {
@@ -112,8 +116,8 @@ public class Product {
 		this.ratingCount = ratingCount;
 	}
 
-	public String getProductCategory() {
-		return this.productCategory.getName();
+	public ProductCategory getProductCategory() {
+		return this.productCategory;
 	}
 
 	public void setProductCategory(ProductCategory productCategory) {
