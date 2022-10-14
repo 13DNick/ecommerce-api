@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,14 +42,14 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product")
-	public void saveProduct(Product product) {
+	public void saveProduct(@RequestBody Product product) {
 		//ignore any id sent in the request – overwrite id with 0
 		product.setId(0);
 		this.productService.saveProduct(product);
 	}
 	
 	@PutMapping("/product")
-	public Product updateProduct(Product product) {
+	public Product updateProduct(@RequestBody Product product) {
 		this.productService.saveProduct(product);
 		return product;
 	}
