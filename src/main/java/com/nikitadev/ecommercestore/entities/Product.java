@@ -9,8 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
+
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 
@@ -18,6 +21,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 @Table(name="product")
 //solve Jackson infinite recursion problem
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Product {
 	
 	@Id
@@ -37,8 +41,10 @@ public class Product {
 	@Column(name="image_url")
 	private String imageURL;
 	
+
 	@Column(name="rating")
 	private double rating;
+	
 	
 	@Column(name="rating_count")
 	private int ratingCount;
@@ -46,6 +52,11 @@ public class Product {
 	@JoinColumn(name="category_id")
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
 	private ProductCategory productCategory;
+	
+	//field here to track category in case of Jackson deserialization
+	//hibernate needs to ignore this
+	@Transient
+	private String category;
 	
 	public Product() {
 		
@@ -122,6 +133,15 @@ public class Product {
 
 	public void setProductCategory(ProductCategory productCategory) {
 		this.productCategory = productCategory;
+	}
+	
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	@Override
