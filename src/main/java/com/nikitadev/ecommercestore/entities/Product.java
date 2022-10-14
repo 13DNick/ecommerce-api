@@ -112,8 +112,8 @@ public class Product {
 		this.ratingCount = ratingCount;
 	}
 
-	public ProductCategory getProductCategory() {
-		return productCategory;
+	public String getProductCategory() {
+		return this.productCategory.getName();
 	}
 
 	public void setProductCategory(ProductCategory productCategory) {

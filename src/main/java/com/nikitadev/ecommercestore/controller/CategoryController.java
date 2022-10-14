@@ -57,13 +57,12 @@ public class CategoryController {
 	}
 	
 	@DeleteMapping("/category/{id}")
-	public String deleteProductCategory(@PathVariable int id) {
+	public void deleteProductCategory(@PathVariable int id) {
 		ProductCategory productCategory = this.productCategoryService.getProductCategory(id);
 		if(productCategory == null) {
 			throw new ProductCategoryNotFoundException("Category id not found: " + id);
 		}
 		this.productCategoryService.deleteProductCategory(id);
-		return "Deleted Category with id: " + id;
 	}
 	
 }
