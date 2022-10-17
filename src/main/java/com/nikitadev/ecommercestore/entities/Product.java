@@ -13,6 +13,7 @@ import javax.persistence.Transient;
 
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -54,8 +55,8 @@ public class Product {
 	private ProductCategory productCategory;
 	
 	//field here to track category in case of Jackson deserialization
-	//hibernate needs to ignore this
-	@Transient
+	@Transient //ignore this field in the database
+	@JsonIgnore //prevent from serialization (returning in json)
 	private String category;
 	
 	public Product() {
@@ -127,8 +128,8 @@ public class Product {
 		this.ratingCount = ratingCount;
 	}
 
-	public ProductCategory getProductCategory() {
-		return this.productCategory;
+	public int getProductCategory() {
+		return this.productCategory.getId();
 	}
 
 	public void setProductCategory(ProductCategory productCategory) {
