@@ -17,7 +17,7 @@ import com.nikitadev.ecommercestore.entities.Product;
 import com.nikitadev.ecommercestore.error.ProductNotFoundException;
 import com.nikitadev.ecommercestore.service.ProductService;
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class ProductController {

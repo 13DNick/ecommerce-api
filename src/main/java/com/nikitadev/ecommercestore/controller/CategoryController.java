@@ -18,7 +18,7 @@ import com.nikitadev.ecommercestore.error.ProductCategoryNotFoundException;
 import com.nikitadev.ecommercestore.service.ProductCategoryService;
 
 
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
 public class CategoryController {
