@@ -48,4 +48,16 @@ public class ProductDAOImpl implements ProductDAO {
 		query.executeUpdate();
 	}
 
+	@Override
+	public List<Product> searchProduct(String query) {
+		Session session = entityManager.unwrap(Session.class);
+		
+		Query<Product> q = session.createQuery("from Product p where p.name like :query or p.description like :query", Product.class);
+		q.setParameter("query", "%" + query + "%");
+		List<Product> products = q.getResultList();
+		
+		
+		return products;
+	}
+
 }

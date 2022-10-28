@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nikitadev.ecommercestore.entities.Product;
@@ -24,6 +25,16 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	
+	@GetMapping("/products/search")
+	public List<Product> searchProduct(@RequestParam("q") String query){
+		List<Product> results = this.productService.searchProduct(query);
+		
+		
+		return results;
+	}
+	
 	
 	@GetMapping("/products")
 	public List<Product> getProducts(){

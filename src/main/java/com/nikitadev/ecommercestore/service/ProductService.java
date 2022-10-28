@@ -13,5 +13,7 @@ public interface ProductService {
 	public Product getProduct(int id);
 
 	public void deleteProduct(int id);
+
+	public List<Product> searchProduct(String query);
 	
 }
