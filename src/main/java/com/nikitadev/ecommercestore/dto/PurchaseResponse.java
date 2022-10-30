@@ -2,27 +2,27 @@ package com.nikitadev.ecommercestore.dto;
 
 public class PurchaseResponse {
 	
-	private String orderTrackingObject;
+	private String orderTrackingNumber;
 
 	public PurchaseResponse() {
 		
 	}
 	
-	public PurchaseResponse(String orderTrackingObject) {
-		this.orderTrackingObject = orderTrackingObject;
+	public PurchaseResponse(String orderTrackingNumber) {
+		this.orderTrackingNumber = orderTrackingNumber;
 	}
 
-	public String getOrderTrackingObject() {
-		return orderTrackingObject;
+	public String getOrderTrackingNumber() {
+		return orderTrackingNumber;
 	}
 
-	public void setOrderTrackingObject(String orderTrackingObject) {
-		this.orderTrackingObject = orderTrackingObject;
+	public void setOrderTrackingNumber(String orderTrackingNumber) {
+		this.orderTrackingNumber = orderTrackingNumber;
 	}
 
 	@Override
 	public String toString() {
-		return "PurchaseResponse [orderTrackingObject=" + orderTrackingObject + "]";
+		return "PurchaseResponse [orderTrackingNumber=" + orderTrackingNumber + "]";
 	}
 	
 }
