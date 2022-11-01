@@ -17,6 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import io.swagger.annotations.ApiModelProperty;
+
 
 @Entity
 @Table(name="product")
@@ -52,6 +54,7 @@ public class Product {
 	
 	@JoinColumn(name="category_id")
 	@ManyToOne(cascade={CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@ApiModelProperty(hidden=true)
 	private ProductCategory productCategory;
 	
 	//field here to track category in case of Jackson deserialization

@@ -9,6 +9,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="order_item")
 public class OrderItem {
@@ -16,6 +18,7 @@ public class OrderItem {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@ApiModelProperty(hidden=true)
 	private int id;
 	
 	@Column(name="unit_price")
@@ -32,6 +35,7 @@ public class OrderItem {
 
 	@ManyToOne
 	@JoinColumn(name="order_id")
+	@ApiModelProperty(hidden=true)
 	private Order order;
 	
 	

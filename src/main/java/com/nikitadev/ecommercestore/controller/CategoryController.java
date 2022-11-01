@@ -17,6 +17,8 @@ import com.nikitadev.ecommercestore.entities.ProductCategory;
 import com.nikitadev.ecommercestore.error.ProductCategoryNotFoundException;
 import com.nikitadev.ecommercestore.service.ProductCategoryService;
 
+import io.swagger.annotations.ApiOperation;
+
 
 @CrossOrigin(origins = "*")
 @RestController
@@ -28,6 +30,7 @@ public class CategoryController {
 	
 	
 	@GetMapping("/categories")
+	@ApiOperation(value="Get all categories")
 	public List<ProductCategory> getProductCategories(){
 		return this.productCategoryService.getProductCategories();
 	}

@@ -12,6 +12,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="customer")
 public class Customer {
@@ -19,6 +21,7 @@ public class Customer {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@ApiModelProperty(hidden=true)
 	private int id;
 	
 	@Column(name="first_name")

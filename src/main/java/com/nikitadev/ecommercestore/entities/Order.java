@@ -17,6 +17,8 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="`order`")
 public class Order {
@@ -24,9 +26,11 @@ public class Order {
 	@Id
 	@Column(name="id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@ApiModelProperty(hidden=true)
 	private int id;
 	
 	@Column(name="order_tracking_number")
+	@ApiModelProperty(hidden=true)
 	private String orderTrackingNumber;
 	
 	@Column(name="total_quantity")
@@ -37,13 +41,16 @@ public class Order {
 	
 	@Column(name="date_created")
 	@CreationTimestamp
+	@ApiModelProperty(hidden=true)
 	private Date dateCreated;
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="order")
+	@ApiModelProperty(hidden=true)
 	private Set<OrderItem> orderItems;
 	
 	@ManyToOne
 	@JoinColumn(name="customer_id")
+	@ApiModelProperty(hidden=true)
 	private Customer customer;
 	
 	public Order() {

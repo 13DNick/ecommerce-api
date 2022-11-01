@@ -18,6 +18,8 @@ import com.nikitadev.ecommercestore.entities.Product;
 import com.nikitadev.ecommercestore.error.ProductNotFoundException;
 import com.nikitadev.ecommercestore.service.ProductService;
 
+import io.swagger.annotations.ApiOperation;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api")
@@ -28,6 +30,7 @@ public class ProductController {
 	
 	
 	@GetMapping("/products/search")
+	@ApiOperation(value="Search all products by keyword")
 	public List<Product> searchProduct(@RequestParam("q") String query){
 		List<Product> results = this.productService.searchProduct(query);
 		
@@ -37,6 +40,7 @@ public class ProductController {
 	
 	
 	@GetMapping("/products")
+	@ApiOperation(value="Get all products")
 	public List<Product> getProducts(){
 		return this.productService.getProducts();
 	}

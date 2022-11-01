@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 @Table(name="product_category")
 //solve Jackson infinite recursion problem
@@ -31,6 +33,7 @@ public class ProductCategory {
 	
 	@OneToMany(mappedBy="productCategory", cascade={CascadeType.PERSIST, CascadeType.MERGE, 
 		    CascadeType.DETACH, CascadeType.REFRESH})
+	@ApiModelProperty(hidden=true)
 	private List<Product> products;
 	
 	public ProductCategory() {
