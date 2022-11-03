@@ -1,4 +1,6 @@
 /src/main/resources/application.properties
+/src/main/resources/bdn-keystore.p12
+
 **/target/**
 
 HELP.md

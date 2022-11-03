@@ -30,7 +30,6 @@ public class StartupRunner implements CommandLineRunner{
 	
 	@Override
 	public void run(String... args) throws Exception {
-		LOGGER.info("app has started");
 		
 		//check if database records are empty
 		//empty - populate via api request
@@ -41,12 +40,12 @@ public class StartupRunner implements CommandLineRunner{
 			
 			//request all categories and convert to pojo
 			List<ProductCategory> categories = this.jsonToProductCategory(this.getCategories());
-			LOGGER.info(categories.toString());
+			LOGGER.info("CATEGORIES: " + categories.toString());
 			
 			LOGGER.info("===================");
 			
 			List<Product> products = this.jsonToProduct(this.getProducts());
-			LOGGER.info(products.toString());
+			LOGGER.info("PRODUCTS: " + products.toString());
 			
 			LOGGER.info("===================");
 			LOGGER.info("CATEGORIZING ======================");

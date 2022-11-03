@@ -1,5 +1,6 @@
 package com.nikitadev.ecommercestore.error;
 
+@SuppressWarnings("serial")
 public class ProductNotFoundException extends RuntimeException{
 	
 	public ProductNotFoundException() {
