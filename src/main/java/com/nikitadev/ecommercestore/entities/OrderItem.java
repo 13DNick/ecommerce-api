@@ -32,6 +32,9 @@ public class OrderItem {
 	
 	@Column(name="product_id")
 	private int productId;
+	
+	@Column(name="name")
+	private String name;
 
 	@ManyToOne
 	@JoinColumn(name="order_id")
@@ -43,11 +46,12 @@ public class OrderItem {
 		
 	}
 
-	public OrderItem(double unitPrice, int quantity, String imageURL, int productId) {
+	public OrderItem(double unitPrice, int quantity, String imageURL, int productId, String name) {
 		this.unitPrice = unitPrice;
 		this.quantity = quantity;
 		this.imageURL = imageURL;
 		this.productId = productId;
+		this.name = name;
 	}
 
 	public int getId() {
@@ -90,6 +94,14 @@ public class OrderItem {
 		this.productId = productId;
 	}
 	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public Order getOrder() {
 		return order;
 	}
