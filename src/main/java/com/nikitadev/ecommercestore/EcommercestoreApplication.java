@@ -28,6 +28,7 @@ public class EcommercestoreApplication {
 	@Bean
 	public Docket swaggerConfiguration() {
 		return new Docket(DocumentationType.SWAGGER_2)
+				.host("ecommerceapi.xyz")
 				.select()
 				.paths(PathSelectors.ant("/api/**"))
 				.apis(RequestHandlerSelectors.basePackage("com.nikitadev"))
