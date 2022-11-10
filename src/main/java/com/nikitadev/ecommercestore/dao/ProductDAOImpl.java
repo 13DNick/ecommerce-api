@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.nikitadev.ecommercestore.entities.Product;
+import com.nikitadev.ecommercestore.entities.ProductCategory;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -30,7 +31,11 @@ public class ProductDAOImpl implements ProductDAO {
 	@Override
 	public void saveProduct(Product product) {
 		Session session = entityManager.unwrap(Session.class);
-		session.saveOrUpdate(product);
+		
+		ProductCategory category = session.get(ProductCategory.class, product.getProductCategory());
+		category.addProduct(product);
+		
+		session.save(product);
 	}
 
 	@Override
