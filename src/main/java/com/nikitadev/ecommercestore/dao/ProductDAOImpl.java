@@ -35,7 +35,7 @@ public class ProductDAOImpl implements ProductDAO {
 		ProductCategory category = session.get(ProductCategory.class, product.getProductCategory());
 		category.addProduct(product);
 		
-		session.save(product);
+		session.saveOrUpdate(product);
 	}
 
 	@Override

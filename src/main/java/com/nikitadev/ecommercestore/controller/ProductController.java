@@ -46,6 +46,7 @@ public class ProductController {
 	}
 	
 	@GetMapping("/product/{id}")
+	@ApiOperation(value="Get a product by id")
 	public Product getProduct(@PathVariable int id) {
 		Product product = this.productService.getProduct(id);
 		
@@ -57,6 +58,7 @@ public class ProductController {
 	}
 	
 	@PostMapping("/product")
+	@ApiOperation(value="Save a product", notes="MUST provide a valid/existing productCategory Id")
 	public void saveProduct(@RequestBody Product product) {
 		//ignore any id sent in the request – overwrite id with 0
 		product.setId(0);
@@ -64,12 +66,14 @@ public class ProductController {
 	}
 	
 	@PutMapping("/product")
+	@ApiOperation(value="Update a product", notes="MUST provide an existing product id AND productCategory id.")
 	public Product updateProduct(@RequestBody Product product) {
 		this.productService.saveProduct(product);
 		return product;
 	}
 	
 	@DeleteMapping("/product/{id}")
+	@ApiOperation(value="Delete a product")
 	public void deleteProduct(@PathVariable int id) {
 		Product product = this.productService.getProduct(id);
 		
